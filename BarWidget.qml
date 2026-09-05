@@ -11,7 +11,7 @@ BarWidget {
     id: engine
   }
 
-  readonly property string displayTimezone: String(setting("displayTimezone", "Pacific/Auckland"))
+  readonly property string displayTimezone: String(setting("displayTimezone", "America/New_York"))
   readonly property bool showCountdown: setting("showCountdown", true) !== false
   readonly property bool countDownToPre: setting("countDownToPre", false) === true
   readonly property int tickSeconds: Math.max(5, Number(setting("tickSeconds", 30)) || 30)

@@ -4,6 +4,8 @@ Session clock for the [Omarchy](https://omarchy.org) Quattro bar. Shows when maj
 
 **Exchanges:** NYSE · NASDAQ · LSE · TSE (Tokyo) · ASX · NZX
 
+![Market Hours preview](preview.png)
+
 ## Install
 
 ```bash
@@ -14,6 +16,12 @@ Place or move the widget if needed:
 
 ```bash
 omarchy bar put mcx424.market-hours --section right
+```
+
+Validate after install:
+
+```bash
+omarchy plugin validate ~/.config/omarchy/plugins/mcx424.market-hours
 ```
 
 ## Usage
@@ -36,14 +44,27 @@ US early-close and full holidays come from the bundled calendar in `data/us-equi
 
 ## Configure
 
-Defaults are in `manifest.json`. Override via Omarchy bar widget settings or the `mcx424.market-hours` entry in `shell.json`:
+Defaults live in `manifest.json`. Override via Omarchy bar widget settings or the `mcx424.market-hours` entry in `shell.json`.
 
 | Key | Default | Description |
 |-----|---------|-------------|
-| `displayTimezone` | `Pacific/Auckland` | IANA timezone for countdown display |
+| `displayTimezone` | `America/New_York` | IANA timezone for countdown display |
 | `showCountdown` | `true` | Show time until next state change |
 | `countDownToPre` | `false` | Count down to pre-market instead of regular open |
+| `usPreStart` | `04:00` | US pre-market start (Eastern time) |
+| `usRegularOpen` | `09:30` | US regular open (Eastern time) |
+| `usRegularClose` | `16:00` | US regular close (Eastern time) |
+| `usAhEnd` | `20:00` | US after-hours end (Eastern time) |
 | `tickSeconds` | `30` | Refresh interval |
+
+APAC tip: set `displayTimezone` to `Pacific/Auckland` (or your local IANA zone) so countdowns read in local wall time.
+
+## Limitations
+
+- Clock only — no quotes, no network
+- Non-US holiday calendars are not bundled in v1 (weekdays-only for LSE, TSE, ASX, NZX)
+- US holiday data is for 2026; refresh the JSON for later years
+- Extended-hours windows vary by broker
 
 ## Update
 
@@ -60,7 +81,7 @@ omarchy plugin remove mcx424.market-hours
 ## Sources
 
 - US hours and holidays: [NYSE Holidays & Trading Hours](https://www.nyse.com/markets/hours-calendars)
-- Other venues: standard cash-session hours in local time (weekdays only in v1)
+- Other venues: standard cash-session hours in local time
 
 Not trading advice. Extended-hours windows vary by broker.
 
