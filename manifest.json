@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "mcx424.market-hours",
+  "name": "Market Hours",
+  "version": "1.0.0",
+  "author": "McX424",
+  "description": "Equity session clock for the Omarchy bar \u2014 NYSE, NASDAQ, LSE, TSE, ASX, NZX. Clock only \u2014 no quotes.",
+  "license": "MIT",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Market Hours",
+    "category": "Markets",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "displayTimezone": "Pacific/Auckland",
+      "showCountdown": true,
+      "countDownToPre": false,
+      "usPreStart": "04:00",
+      "usRegularOpen": "09:30",
+      "usRegularClose": "16:00",
+      "usAhEnd": "20:00",
+      "tickSeconds": 30
+    },
+    "schema": [
+      {
+        "key": "displayTimezone",
+        "type": "string",
+        "label": "Display timezone (IANA)"
+      },
+      {
+        "key": "showCountdown",
+        "type": "bool",
+        "label": "Show countdown"
+      },
+      {
+        "key": "countDownToPre",
+        "type": "bool",
+        "label": "Count down to pre-market instead of regular open"
+      },
+      {
+        "key": "tickSeconds",
+        "type": "number",
+        "label": "Refresh seconds"
+      }
+    ]
+  }
+}
